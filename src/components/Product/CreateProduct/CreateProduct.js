@@ -181,7 +181,7 @@ class CreateProduct extends Component {
                                     />
                                     <Modal {...this.props} onGetImageURL={this.onGetImageURL} label="Product Image"/>
                                     <InputForm
-                                        type="text"
+                                        type="color"
                                         name="color"
                                         label="Product Color"
                                         input={form.color}

@@ -34,7 +34,6 @@ class ViewProducts extends Component {
                                 <div className="cols">
                                     <div className="col-12 flex-space-between bg-light-grey flex-align-center">
                                         <h3 className="marginless">View Car Adverts</h3>
-                                        <a href="../user/create-car-advert.html" className="button bg-blue init-width"> Create Car Advert</a>
                                     </div>
                                     <div className="col-12">
                                         <div className="cols">
