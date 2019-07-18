@@ -1,0 +1,67 @@
+/**=========================
+    Alert Box
+==========================**/
+.alert{
+    position: fixed;
+    width:80%;
+    margin: auto;
+    padding: 15px 10px;
+    left: 10%;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(5vh);
+    transition: all 0.5s;
+    z-index: 100;
+    top: 20vh;
+  }
+  
+  .alert.active{
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(30vh);
+  }
+  
+  .alert .alert-modal{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .alert-default{
+    background-color: #cccccc;
+    color: #000000;
+  }
+  
+  .alert-danger{
+    background-color: #fbaea5;
+    color: #a62020;
+  }
+  
+  .alert-success{
+    background-color: #8aec8a;
+    color: #185c1b;
+  }
+  
+  .alert-info{
+    background-color: #7db6e6;
+    color: #142f40;
+  }
+  
+  .alert .alert-message-wrapper{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .alert .alert-close{
+    cursor: pointer;
+  
+  }
+  
+  .alert div.alert-close{
+    margin-top: -0.5em;
+  }
+  
+  .alert span.alert-close{
+    font-size: 1.5em;
+  }
+  

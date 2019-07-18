@@ -1,25 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import NavBar from './components/NavBar/NavBar';
+import ViewProductsContainer from './containers/ViewProductsContainer';
+import CreateProductContainer from './containers/CreateProductContainer';
+import ViewProductContainer from './containers/ViewProductContainer';
+import Footer from './components/Footer/Footer';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavBar />
+      <section className="pb-70px">
+        <div className="container">
+            <div className="cols">
+              <div className="col-12">
+                <Switch>
+                  <Route path="/products" exact component={ViewProductsContainer} />
+                  <Route path="/create-product" exact component={CreateProductContainer} />
+                  <Route path="/product/:id" exact component={ViewProductContainer} />
+                  <Redirect from="/" to="products" />
+                </Switch>
+              </div>
+            </div>
+        </div>
+      </section>
+      <Footer />
+    </Router>
   );
 }
 
