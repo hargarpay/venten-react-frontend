@@ -123,7 +123,7 @@ class Modal extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className={`col-4 paddingless bg-light-grey mobile-view-info mobile-marginless-bottom ${mobileClose ? 'close' : ''}`}>
+                            <div className={`col-4 paddingless bg-light-grey sidebar-scroller mobile-view-info mobile-marginless-bottom ${mobileClose ? 'close' : ''}`}>
                                 <div className="cols">
                                     {
                                         isEmpty(currentImage)

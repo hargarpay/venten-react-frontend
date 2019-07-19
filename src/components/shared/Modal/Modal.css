@@ -203,6 +203,11 @@ a.modal-opener{
     padding: 9.5px !important;
 }
 
+.sidebar-scroller{
+    height: 70vh;
+    overflow-y: scroll;
+}
+
 @media only screen and (max-width: 768px) {
     /**================================
         Image Manager for Mobile View
