@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { isEmpty, rtrim, isEqual } from '../../../../helper';
 import Alert from '../../Alert/Alert';
+import './FileUploader.css';
+import Switch from '../../Switch/Switch';
 
 class FileUploader extends Component {
     constructor(props) {
@@ -13,7 +15,7 @@ class FileUploader extends Component {
             filenameView: '',
             showAlert: false,
             type: 'success',
-            message: ''
+            message: '',
          }
          this.sliceSize = 50 * 1024;
          this.currentFile = null;
@@ -151,10 +153,18 @@ class FileUploader extends Component {
             showAlert: false,
         })
     }
+
+    onSwitchHandler = () => {
+        this.setState({
+            buttonStatus: 'select'
+        })
+    }
          
 
     render() { 
-        const { buttonStatus, loading, progress, filenameView, showAlert, type, message } = this.state;
+        const {
+            buttonStatus, loading, progress, filenameView, showAlert, type, message,
+        } = this.state;
 
 
         return ( 
@@ -164,6 +174,12 @@ class FileUploader extends Component {
         }
         <div className="col-12 flex-center">
             <div className="field">
+                {
+                    buttonStatus === 'upload'
+                    ? <Switch onSwitch={this.onSwitchHandler} status />
+                    : null
+                }
+                
                 <div className="controls">
                     <div className="input mw250">
                         <input
@@ -173,7 +189,12 @@ class FileUploader extends Component {
                             ref={this.fileInputRef} 
                             onChange={(event) => this.fileUploadChangeHandler(event)}
                         />
-                        <h5 className="text-center marginless-top">{filenameView}</h5>
+                        {
+                            buttonStatus === 'upload'
+                            ? <h5 className="text-center marginless-top">{filenameView}</h5>
+                            : null
+                        }
+                        
                         <button 
                             onClick={ 
                                 buttonStatus === 'select' 

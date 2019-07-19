@@ -3,6 +3,7 @@ import './Modal.css';
 import ImageItem from './ImageItem/ImageItem';
 import { getDeepObjValue, isEmpty, isEqual, deepPropsExist } from '../../../helper';
 import FileUploader from './FileUploader/FileUploader';
+import Alert from '../Alert/Alert';
 
 class Modal extends Component {
     constructor(props) {
@@ -13,7 +14,10 @@ class Modal extends Component {
             mobileClose: false,
             mediaClose: true,
             imageURL: '',
-            imageLists: []
+            imageLists: [],
+            showAlert: false,
+            type: 'danger',
+            message: ''
          }
     }
 
@@ -29,7 +33,6 @@ class Modal extends Component {
                 const { resources } = imgLists.data;
                 const newImagLists = [...resources];
                 this.setState({imageLists: newImagLists});
-
             }
         }
 
@@ -67,6 +70,11 @@ class Modal extends Component {
         const { onGetImageURL } = this.props;
         if(isEmpty(currentImage)){
             // alert
+            this.setState({
+                showAlert: true,
+                type: 'danger',
+                message: 'You have not selected any image'
+            });
         }else{
             this.setState({
                 imageURL: currentImage.url,
@@ -76,13 +84,24 @@ class Modal extends Component {
         }
     }
 
+    onCloseAlert = () => {
+        this.setState({
+            showAlert: false
+        })
+    }
+
 
     render() { 
-        const { currentView, currentImage, mobileClose, mediaClose, imageURL, imageLists } = this.state;
-        const { label } = this.props;
+        const {
+            currentView, currentImage, mobileClose, mediaClose, imageLists,
+            showAlert, type, message
+         } = this.state;
+        const { label, input } = this.props;
         return (
             <>
-
+            {
+                showAlert ? <Alert type={type} message={message} alertClose={this.onCloseAlert}/> : null
+            }
             <div className={`modal ${ !mediaClose ? 'active' : ''}`}>
                 <div className="modal-inner">
                     <div className="modal-header">
@@ -143,7 +162,7 @@ class Modal extends Component {
                                                     <img src={currentImage.url} alt="" className="img-responsive" />
                                                 </div>
                                                 <div className="col-12 paddingless-top paddingless-bottom">
-                                                    <div className="divider"></div>
+                                                    {/* <div className="divider"></div> */}
                                                 </div>
                                                 <div className="col-12">
                                                     <div className="cols">
@@ -154,9 +173,16 @@ class Modal extends Component {
                                                     <div className="divider"></div>
                                                     <div className="cols">
                                                         <div className="col-12 paddingless-top">
-                                                            <h5 className="marginless">Image Name: {currentImage.public_id.replace('venten/', '')}</h5>
-                                                            <h5 className="marginless">Image Demension: {currentImage.width}x{currentImage.height}</h5>
-                                                            <h5 className="marginless">Image Size: {(currentImage.bytes / 1000).toFixed(2)} KB</h5>
+                                                            <h5 className="marginless is-uppercase">Image Name:</h5>
+                                                            <p className="marginless-top">{currentImage.public_id.replace('venten/', '')}</p>
+                                                            <div className="divider"></div>
+                                                            <h5 className="marginless  is-uppercase">Image Demension:</h5>
+                                                            <p className="marginless-top">{currentImage.width}x{currentImage.height}</p>
+                                                            <div className="divider"></div>
+                                                            <h5 className="marginless  is-uppercase">Image Size:</h5>
+                                                            <p className="marginless-top">{((currentImage.bytes / (1024 * 1024)) >= 1.00) 
+                                                            ? `${(currentImage.bytes / (1024 * 1024)).toFixed(2)} MB`
+                                                            :`${(currentImage.bytes / 1024).toFixed(2)} KB`}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -170,7 +196,7 @@ class Modal extends Component {
                     <div className="modal-footer">
                         <div className="flex-space-between flex-align-center">
                             <div className="">
-                                <button onClick={() => this.onCloseMobileInfo(true)} type="button" className="button init-width bg-dark-peach close-info-view open">Close</button>
+                                <button onClick={() => this.onCloseMobileInfo(true)} type="button" className="button init-width bg-dark-peach close-info-view open">Close Preview</button>
                             </div>
                             <div className="select-image">
                                 <button onClick={this.onSelectImage} type="button" className="button init-width bg-blue">Select File</button>
@@ -188,7 +214,7 @@ class Modal extends Component {
             <div className="field addon">
                 <div className="control flex-4">
                     <div className="input is-fullheight">
-                        <input type="text" value={imageURL} className="is-fullheight radiusless-tr-br" readOnly placeholder="Click the button to slect Image" />
+                        <input type="text" value={input.value} className="is-fullheight radiusless-tr-br" readOnly placeholder="Click the button to slect Image" />
                     </div>
                 </div>
                 <div className="control flex-1">

@@ -179,7 +179,12 @@ class CreateProduct extends Component {
                                         input={form.category}
                                         change={this.onHandleChange}
                                     />
-                                    <Modal {...this.props} onGetImageURL={this.onGetImageURL} label="Product Image"/>
+                                    <Modal
+                                        {...this.props}
+                                        onGetImageURL={this.onGetImageURL}
+                                        input={form.image}
+                                        label="Product Image"
+                                        />
                                     <InputForm
                                         type="color"
                                         name="color"

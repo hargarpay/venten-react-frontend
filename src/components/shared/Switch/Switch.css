@@ -1,0 +1,31 @@
+/**===================
+    Switch Module
+===================**/
+.slider{
+    width: 50px;
+    height: 25px;
+    background-color: #f9a9a9;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.dot-slider{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: red;
+    display: block;
+    margin-left: 0px;
+    pointer-events: none;
+    transition: all 0.5s;
+}
+
+.slider.active{
+    background-color: #b6f9a9;
+}
+
+.dot-slider.active{
+    margin-left: 25px;
+    background-color: green;
+}
