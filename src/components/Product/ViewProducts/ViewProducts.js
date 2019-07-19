@@ -3,6 +3,7 @@ import { Link} from 'react-router-dom';
 
 import './ViewProducts.css';
 import { isEqual } from '../../../helper';
+import Table from '../../shared/Table/Table';
 
 class ViewProducts extends Component {
     constructor(props) {
@@ -24,6 +25,16 @@ class ViewProducts extends Component {
             this.setState({products: newProducts});
         }
     }
+
+    onActionHander = (product) => (
+    <td className="text-center">
+            <button type="button" className="button link bg-blue dilb paddingless bdr-color-blue">
+                <Link to={`/product/${product.id}`}>
+                    View
+                </Link>
+            </button>
+        </td>
+    )
     render() { 
         const { products } = this.state;
         return ( 
@@ -38,39 +49,21 @@ class ViewProducts extends Component {
                                     <div className="col-12">
                                         <div className="cols">
                                             <div className="col-12 paddingless-top">
-                                                <div className="table">
-                                                    <table className="serial">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>ID</th>
-                                                                <th>Name</th>
-                                                                <th>Price</th>
-                                                                <th>Actions</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
+                                                {
+                                                    <Table
+                                                        tableHead={
                                                             {
-                                                                products.length > 0 ? (
-                                                                    products.map(product => (
-                                                                        <tr key={product.id}>
-                                                                            <td data-title="ID">{product.id}</td>
-                                                                            <td data-title="Name">{product.name}</td>
-                                                                            <td data-title="Price"> {product.price} </td>
-                                                                            <td className="text-center">
-                                                                                <button type="button" className="button link bg-blue dilb paddingless bdr-color-blue">
-                                                                                    <Link to={`/product/${product.id}`}>
-                                                                                        View
-                                                                                    </Link>
-                                                                                </button>
-                                                                            </td>
-                                                                        </tr>
-                                                                    ))
-                                                                ) : null
+                                                                id: 'ID',
+                                                                name: 'Name',
+                                                                price: 'Price'
                                                             }
-                                                            
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                        }
+                                                        dataTable={products}
+                                                        fieldKey="id"
+                                                        action
+                                                        onActionHander={this.onActionHander}
+                                                    />
+                                                }
                                             </div>
                                         </div>
                                     </div>

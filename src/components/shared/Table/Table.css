@@ -1,0 +1,169 @@
+/**==============================
+    Table 
+===============================**/
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table thead{
+    background-color: #142f40;
+    color: #ffffff;
+}
+table.dark-peach thead{
+    background-color: #a62020;
+    color: #ffffff;
+}
+
+table.peach thead{
+    background-color: #f29f8d;
+    color: #142f40;
+}
+
+table thead th,
+table thead td{
+    border-right-color: #ffffff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+table.peach thead th,
+table.peach thead td{
+    border-right-color: #142f40;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+
+table thead th:last-child,
+table thead td:last-child{
+    border-right-color: #142f40;
+}
+
+table.dark-peach thead th:last-child,
+table.dark-peach thead td:last-child{
+    border-right-color: #a62020;
+}
+
+table.peach thead th:last-child,
+table.peach thead td:last-child{
+    border-right-color: #f29f8d;
+}
+
+table.serial thead th:first-child,
+table.serial tbody td:first-child{
+    width: 10px;
+}
+
+table.serial.not-fix thead th:first-child,
+table.serial.not-fix tbody td:first-child{
+    width: initial;
+}
+
+table.hover tbody tr:hover{
+    background-color: rgba(20, 47, 64, 0.5);
+}
+
+table.hover.dark-peach tbody tr:hover{
+    background-color: rgba(166, 31, 31, 0.5)
+}
+
+table.hover.peach tbody tr:hover{
+    background-color: rgba(242, 159, 141, 0.5);
+}
+
+
+table tfoot tr{
+
+}
+
+table td,
+table th{
+    border: 1px solid #142f40;
+    padding: 10px;
+}
+
+table.dark-peach td,
+table.dark-peach th{
+    border: 1px solid #a62020;
+    padding: 10px;
+}
+
+table.peach td,
+table.peach th{
+    border: 1px solid #f29f8d;
+    padding: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    /**===================================
+        Table for mobile
+    ===================================**/
+    table,
+    thead,
+    tbody,
+    tr, th, td{
+        display: block;
+    }
+
+    table tr td{
+        position: relative;
+    }
+
+    table.serial tbody td:first-child{
+        width: 100%;
+    }
+
+    table tr td:before{
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    thead tr{
+        position: absolute;
+        top: -99999px;
+        left: -99999px
+    }
+
+    table.serial tbody tr td:first-child{
+        background-color: #142f40;
+        color: white;
+    }
+
+    table.serial tbody tr td:first-child,
+    tbody tr td[data-title]{
+        padding-left: 50% !important;
+    }
+
+    tbody tr td:nth-of-type(2):before {
+            content: attr(data-title);
+    }
+    tbody tr td:nth-of-type(3):before {
+            content: attr(data-title);
+    }
+    tbody tr td:nth-of-type(4):before {
+            content: attr(data-title);
+    }
+    tbody tr td:nth-of-type(5):before {
+            content: attr(data-title);
+    }
+    tbody tr td:nth-of-type(6):before {
+            content: attr(data-title);
+    }
+    tbody tr td:nth-of-type(7):before {
+            content: attr(data-title);
+    }
+    tbody tr td:nth-of-type(8):before {
+            content: attr(data-title);
+    }
+    tbody tr td:nth-of-type(9):before {
+            content: attr(data-title);
+    }
+    tbody tr td:nth-of-type(10):before {
+            content: attr(data-title);
+    }
+}
