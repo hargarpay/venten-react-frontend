@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Modal.css';
 import ImageItem from './ImageItem/ImageItem';
-import { getDeepObjValue, isEmpty, isEqual } from '../../../helper';
+import { getDeepObjValue, isEmpty, isEqual, deepPropsExist } from '../../../helper';
 import FileUploader from './FileUploader/FileUploader';
 
 class Modal extends Component {
@@ -31,6 +31,15 @@ class Modal extends Component {
                 this.setState({imageLists: newImagLists});
 
             }
+        }
+
+        if (
+            !isEqual(this.props.image, nextProps.image)
+        && deepPropsExist(nextProps, 'image', 'data')
+        && typeof nextProps.image.data === 'object') {
+            const { imageLists } = this.state;
+            const newImageLists = [nextProps.image.data].concat(imageLists);
+            this.setState({imageLists: newImageLists});
         }
     }
 

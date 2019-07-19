@@ -43,7 +43,7 @@ class FileUploader extends Component {
                         type: 'success',
                         message: 'Image Successfully uploaded'
                     });
-                    console.log('You have successfully uploaded your file');
+                    console.log(nextProps.image);
                 }
             } else {
                 this.setState({

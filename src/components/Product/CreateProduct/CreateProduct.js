@@ -29,7 +29,7 @@ const initialFormState = {
         message: '',
     },
     color: {
-        value: '',
+        value: '#000000',
         validation: ['required', 'min_length:2'],
         valid: false,
         touch: false,
