@@ -33,7 +33,7 @@ class ViewProducts extends Component {
                     <div className="col-12 paddingless-top paddingless-left paddingless-right bg-light-grey">
                                 <div className="cols">
                                     <div className="col-12 flex-space-between bg-light-grey flex-align-center">
-                                        <h3 className="marginless">View Car Adverts</h3>
+                                        <h3 className="marginless">View Products</h3>
                                     </div>
                                     <div className="col-12">
                                         <div className="cols">
